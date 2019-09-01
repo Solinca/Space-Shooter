@@ -62,11 +62,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\FireBullet.cs" />
-    <Compile Include="Assets\Scripts\LookAtMouse.cs" />
-    <Compile Include="Assets\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\Scripts\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\FireBullet.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\LookAtMouse.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\ShieldRegeneration.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\ShootNearbyUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Classes\Coin.cs" />
+    <Compile Include="Assets\Scripts\Classes\Ennemy.cs" />
+    <Compile Include="Assets\Scripts\Classes\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Classes\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Classes\Player.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IShip.cs" />
+    <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TextManager.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
