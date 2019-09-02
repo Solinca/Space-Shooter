@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Bullet : MonoBehaviour
 {
     private new Rigidbody2D rigidbody;
-    private readonly float velocity = 300f;
+    private readonly float velocity = 500f;
     private readonly int damage = 5;
     private bool isPlayerBullet = false;
 

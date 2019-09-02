@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootNearbyUnit : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ShootNearbyUnit : MonoBehaviour
     private Transform canvas;
     private new Collider2D collider;
     public Sprite bulletImage;
+    public Slider HealthBar;
 
     private void Start()
     {
@@ -41,6 +43,8 @@ public class ShootNearbyUnit : MonoBehaviour
 
             Vector2 direction = new Vector2(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y);
             transform.up = direction;
+            HealthBar.transform.rotation = Quaternion.identity;
+            HealthBar.transform.position = transform.position + new Vector3(0, -39f);
 
             Bullet bulletClone = Instantiate(bullet, transform.position, transform.rotation, canvas);
             Physics2D.IgnoreCollision(bulletClone.GetComponent<Collider2D>(), collider);

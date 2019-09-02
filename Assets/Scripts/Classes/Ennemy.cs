@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Ennemy : MonoBehaviour, IShip
 {
     public Coin coin;
-    private int health = 20;
+    public Slider HealthBar;
+    private float health = 20f;
+    private readonly float maxHealth = 20f;
     private Transform canvas;
 
     private void Start()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        HealthBar.value = health;
     }
 
     public void GetDamaged (int damage, bool isPlayerBullet)
     {
         health -= damage;
+        HealthBar.value = health / maxHealth;
 
         if (health <= 0)
         {
@@ -28,7 +33,9 @@ public class Ennemy : MonoBehaviour, IShip
             PlayerManager.Instance.AddKill();
         }
 
-        Instantiate(coin, transform.position, transform.rotation, canvas);
+        WaveManager.Instance.DestroyedEnnemy();
+
+        Instantiate(coin, transform.position, Quaternion.identity, canvas);
         Destroy(gameObject);
     }
 }

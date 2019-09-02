@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6029014276599555786}
   m_Layer: 11
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36, y: 13}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -26.24, y: 22.76}
+  m_SizeDelta: {x: 182.43, y: 182.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6488179209057301239
 CanvasRenderer:
@@ -90,9 +90,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05274651}
+  m_Offset: {x: 0, y: -0.052746505}
   serializedVersion: 2
-  m_Radius: 49.322433
+  m_Radius: 90.29839
 --- !u!50 &1319446948
 Rigidbody2D:
   serializedVersion: 4

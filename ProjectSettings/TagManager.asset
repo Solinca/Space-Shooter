@@ -7,6 +7,9 @@ TagManager:
   - Canvas
   - Ship
   - Life
+  - Bullet
+  - Coin
+  - Rocket
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - Ennemy
   - Bullet
   - Coin
-  - 
+  - Rocket
   - 
   - 
   - 

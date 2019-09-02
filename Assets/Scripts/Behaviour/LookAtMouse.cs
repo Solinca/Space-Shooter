@@ -11,7 +11,7 @@ public class LookAtMouse : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.isPaused)
+        if (PauseMenu.isPaused || WaveManager.Instance.isPaused)
         {
             return;
         }

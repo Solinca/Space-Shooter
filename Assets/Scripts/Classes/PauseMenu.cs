@@ -26,7 +26,11 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+
+        if (!WaveManager.Instance.isPaused)
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void QuitToMainMenu()

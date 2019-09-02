@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8925080222132279595}
   m_Layer: 10
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 7.44, y: 7.44}
+  m_SizeDelta: {x: 168.96, y: 168.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8925080222132279592
 CanvasRenderer:
@@ -113,7 +113,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.4601593, y: -0.811615}
   serializedVersion: 2
-  m_Radius: 50.194168
+  m_Radius: 93.82368
 --- !u!114 &8925080222132279595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,4 +126,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809eaab201dd7ea4e8ea11cde558433b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 300

@@ -3,7 +3,7 @@
 public class PlayerControl : MonoBehaviour
 {
     private new Rigidbody2D rigidbody;
-    private float speed = 250f;
+    private float speed = 350f;
     private Vector2 velocity;
 
     private void Start()
@@ -13,11 +13,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu.isPaused)
-        {
-            return;
-        }
-
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         velocity = input * speed;
@@ -25,6 +20,11 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (WaveManager.Instance.isPaused)
+        {
+            return;
+        }
+
         rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime);
     }
 }

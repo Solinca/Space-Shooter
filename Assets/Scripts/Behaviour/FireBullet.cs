@@ -14,9 +14,9 @@ public class FireBullet : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !PauseMenu.isPaused)
+        if (Input.GetButtonDown("Fire1") && !PauseMenu.isPaused && !WaveManager.Instance.isPaused)
         {
-            Bullet bulletClone = Instantiate(bullet, transform.position, transform.rotation, canvas);
+            Bullet bulletClone = Instantiate(bullet, transform.position + transform.up * 40f, transform.rotation, canvas);
             Physics2D.IgnoreCollision(bulletClone.GetComponent<Collider2D>(), collider);
             bulletClone.SetPlayerBullet(true);
         }
