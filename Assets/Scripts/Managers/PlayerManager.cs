@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
@@ -18,38 +17,39 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public int lifes = 3;
-    public int lifeUpgrade = 0;
-
-    public int hp = 10;
-    public int hpMax = 10;
     public Text hpText;
-
-    public int sp = 40;
-    public int spMax = 40;
-    public int spUpgrade = 0;
-    public int spRechargeRateUpgrade = 0;
     public Text spText;
-
-    public int rockets = 3;
-    public int rocketsMax = 3;
-    public int rocketUpgrade = 0;
     public Text rocketsText;
-
-    public int score = 0;
     public Text scoreText;
-
-    public int kills = 0;
     public Text killsText;
-
-    public int coins = 0;
     public Text coinsText;
-
     public GameObject[] lifesContainer;
+    public int score = 0;
+    public int coins = 0;
+
+    private int lifes = 3;
+    private int hp = 10;
+    private int hpMax = 10;
+    private int sp = 40;
+    private int spMax = 40;
+    private int rockets = 3;
+    private int rocketsMax = 3;
+    private int kills = 0;
+    private int hpMaxCopy = 10;
+    private int spMaxCopy = 40;
+    private int rocketsCopy = 3;
+    private int scoreCopy = 0;
+    private int killsCopy = 0;
+    private int coinsCopy = 0;
+    private readonly int coinValue = 1;
+    private readonly int coinScorePoint = 50;
+    private readonly int killScoreValue = 10;
+    private readonly int upgradeShieldCapacityValue = 10;
+    private readonly float upgradeShieldRegenerationValue = 0.5f;
 
     public void AddCoin()
     {
-        Pay(-1);
+        Pay(-coinValue);
     }
 
     public void Pay(int amount)
@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour
 
     public void AddKill()
     {
-        AddScore(10);
+        AddScore(killScoreValue);
         UpdateInput(++kills, killsText);
     }
 
@@ -70,20 +70,24 @@ public class PlayerManager : MonoBehaviour
         UpdateInput(score, scoreText);
     }
 
+    public void AddCoinScore()
+    {
+        score += coinScorePoint * coins;
+    }
+
     public void RefillRockets()
     {
         rockets = rocketsMax;
         UpdateInput(rockets, rocketsMax, rocketsText);
 
-        Pay(3);
+        Pay(ShopManager.Instance.refillRocketsCost);
     }
 
     public void AddOneRocket()
     {
-        rocketUpgrade++;
         UpdateInput(++rockets, ++rocketsMax, rocketsText);
 
-        Pay(5);
+        Pay(ShopManager.Instance.addOneRocketCost);
     }
 
     public bool CanShootRocket()
@@ -114,7 +118,7 @@ public class PlayerManager : MonoBehaviour
         if (hp <= 0)
         {
             lifes--;
-            ManageLife();
+            lifesContainer[lifes].SetActive(false);
 
             if (lifes > 0)
             {
@@ -126,23 +130,21 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void AddTenShield()
+    public void UpgradeShieldCapacity()
     {
-        sp += 10;
-        spMax += 10;
-        spUpgrade++;
+        sp += upgradeShieldCapacityValue;
+        spMax += upgradeShieldCapacityValue;
 
         UpdateInput(sp, spMax, spText);
 
-        Pay(5);
+        Pay(ShopManager.Instance.upgradeShieldCapacityCost);
     }
 
     public void UpgradeShieldRegenerationRate()
     {
-        spRechargeRateUpgrade++;
-        ShieldRegeneration.regenerationSpeed -= 0.5f;
+        ShieldRegeneration.regenerationSpeed -= upgradeShieldRegenerationValue;
 
-        Pay(5);
+        Pay(ShopManager.Instance.upgradeShieldRegenerationCost);
     }
 
     public void RegenerateShield()
@@ -155,64 +157,23 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void ResetLifeAndShield()
+    {
+        ShieldRegeneration.canRegenerate = false;
+
+        hp = hpMax;
+        sp = spMax;
+
+        UpdateInput(sp, spMax, spText);
+        UpdateInput(hp, hpMax, hpText);
+    }
+
     public void AddOneLife()
     {
+        lifesContainer[lifes].SetActive(true);
         lifes++;
-        lifeUpgrade++;
 
-        Pay(10);
-
-        ManageLife();
-    }
-
-    public void ManageLife()
-    {
-        for (var i = 0; i < lifesContainer.Length; i++)
-        {
-            if (i < lifes)
-            {
-                lifesContainer[i].SetActive(true);
-            } else
-            {
-                lifesContainer[i].SetActive(false);
-            }
-        }
-    }
-
-    public void RestoreHealth(int value)
-    {
-        hp = value;
-        UpdateInput(value, hpMax, hpText);
-    }
-
-    public void RestoreShield(int value)
-    {
-        sp = value;
-        UpdateInput(value, spMax, spText);
-    }
-
-    public void RestoreRockets(int value)
-    {
-        rockets = value;
-        UpdateInput(value, rocketsMax, rocketsText);
-    }
-
-    public void RestoreScore(int value)
-    {
-        score = value;
-        UpdateInput(value, scoreText);
-    }
-
-    public void RestoreKills(int value)
-    {
-        kills = value;
-        UpdateInput(value, killsText);
-    }
-
-    public void RestoreCoins(int value)
-    {
-        coins = value;
-        UpdateInput(value, coinsText);
+        Pay(ShopManager.Instance.addOneLifeCost);
     }
 
     public void UpdateInput(int value, Text text)
@@ -225,19 +186,42 @@ public class PlayerManager : MonoBehaviour
         text.text = value.ToString() + " / " + max.ToString();
     }
 
+    public void CopyData()
+    {
+        hpMaxCopy = hpMax;
+        spMaxCopy = spMax;
+        rocketsCopy = rockets;
+        scoreCopy = score;
+        killsCopy = kills;
+        coinsCopy = coins;
+    }
+
+    public void RestoreData()
+    {
+        hp = hpMaxCopy;
+        sp = spMaxCopy;
+        rockets = rocketsCopy;
+        score = scoreCopy;
+        kills = killsCopy;
+        coins = coinsCopy;
+
+        UpdateInput(hpMaxCopy, hpMax, hpText);
+        UpdateInput(spMaxCopy, spMax, spText);
+        UpdateInput(rocketsCopy, rocketsMax, rocketsText);
+        UpdateInput(scoreCopy, scoreText);
+        UpdateInput(killsCopy, killsText);
+        UpdateInput(coinsCopy, coinsText);
+    }
+
     public void ResetValues()
     {
         lifes = 3;
-        lifeUpgrade = 0;
         hp = 10;
         hpMax = 10;
         sp = 40;
         spMax = 40;
-        spUpgrade = 0;
-        spRechargeRateUpgrade = 0;
         rockets = 3;
         rocketsMax = 3;
-        rocketUpgrade = 0;
         kills = 0;
         score = 0;
         coins = 0;

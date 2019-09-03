@@ -3,8 +3,10 @@
 public class FireBullet : MonoBehaviour
 {
     public Collider2D bullet;
+
     private Transform canvas;
     private new Collider2D collider;
+    private readonly float distanceFromCenter = 40f;
 
     private void Start()
     {
@@ -16,7 +18,7 @@ public class FireBullet : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && !PauseMenu.isPaused && !WaveManager.Instance.isPaused)
         {
-            Collider2D bulletClone = Instantiate(bullet, transform.position + transform.up * 40f, transform.rotation, canvas);
+            Collider2D bulletClone = Instantiate(bullet, transform.position + transform.up * distanceFromCenter, transform.rotation, canvas);
             Physics2D.IgnoreCollision(bulletClone, collider);
         }
     }

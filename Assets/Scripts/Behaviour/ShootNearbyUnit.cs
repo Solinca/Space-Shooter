@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class ShootNearbyUnit : MonoBehaviour
 {
     public Collider2D bullet;
+    public Slider HealthBar;
+
     private readonly float fireRate = 0.5f;
     private float lastShot = 0f;
+    private readonly float healthBarPosition = -40f;
     private Transform canvas;
     private new Collider2D collider;
-    public Slider HealthBar;
 
     private void Start()
     {
@@ -42,7 +44,7 @@ public class ShootNearbyUnit : MonoBehaviour
 
             transform.up = target.transform.position - transform.position;
             HealthBar.transform.rotation = Quaternion.identity;
-            HealthBar.transform.position = transform.position + new Vector3(0, -39f);
+            HealthBar.transform.position = transform.position + new Vector3(0, healthBarPosition);
 
             Collider2D bulletClone = Instantiate(bullet, transform.position, transform.rotation, canvas);
             Physics2D.IgnoreCollision(bulletClone, collider);

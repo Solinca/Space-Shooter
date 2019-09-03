@@ -36,13 +36,14 @@ public class InitHighscores : MonoBehaviour
     private void CreateHighscoreEntry(HighscoreEntry entry, List<Transform> list)
     {
         float templateHeight = 70f;
-        GameObject newEntry = Instantiate(template, container);
-        RectTransform newEntryTransform = newEntry.GetComponent<RectTransform>();
-        newEntryTransform.anchoredPosition = new Vector2(0, -list.Count * templateHeight + 5f);
-        newEntry.gameObject.SetActive(true);
-
+        float margin = 5f;
         int rank = list.Count + 1;
         string rankName = "";
+
+        GameObject newEntry = Instantiate(template, container);
+        RectTransform newEntryTransform = newEntry.GetComponent<RectTransform>();
+        newEntryTransform.anchoredPosition = new Vector2(0, - list.Count * templateHeight + margin);
+        newEntry.gameObject.SetActive(true);
 
         switch (rank)
         {

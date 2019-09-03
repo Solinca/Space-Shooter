@@ -18,13 +18,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    private int ennemies = 3;
-    private int ennemiesDestroyed = 0;
-    private int wave = 1;
-    private Vector2 center;
-    private Vector2 size;
-    private Transform canvas;
-
     public Image wavePanel;
     public Text waveText;
     public Ennemy ennemy;
@@ -34,19 +27,25 @@ public class WaveManager : MonoBehaviour
     public GameObject shop;
     public bool isPaused;
 
-    private int hpMax = 10;
-    private int spMax = 40;
-    private int rockets = 3;
-    private int score = 0;
-    private int kills = 0;
-    private int coins = 0;
+    private int ennemies = 3;
+    private int ennemiesDestroyed = 0;
+    private int wave = 1;
+    private readonly float mapMargin = 50f;
+    private readonly int waveScorePoint = 100;
+    private Vector2 center;
+    private Vector2 size;
+    private Transform canvas;
 
     void Start()
     {
         center = rectangle.bounds.center;
         size = rectangle.bounds.size ;
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        isPaused = true;
+    }
 
+    public void LaunchGame()
+    {
         StartCoroutine(ProcessWave(false));
     }
 
@@ -59,7 +58,7 @@ public class WaveManager : MonoBehaviour
 
         if (hasReset)
         {
-            waveText.text = "YOU HAVE LOST A LIFE. TRY AGAIN THIS WAVE!";
+            waveText.text = "YOU HAVE LOST A LIFE.\nTRY THIS WAVE AGAIN!";
 
             for (float i = 0.05f; i <= 0.8f; i += 0.05f)
             {
@@ -70,7 +69,7 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(2f);
         } else
         {
-            CopyData();
+            PlayerManager.Instance.CopyData();
         }
         
         SpawnEnnemies();
@@ -124,33 +123,16 @@ public class WaveManager : MonoBehaviour
     {
         for (var i = 0; i < ennemies; i++)
         {
-            Vector2 pos = center + new Vector2(Random.Range(-size.x / 2 + 50f, size.x / 2 - 50f), Random.Range(-size.y / 2 + 50f, size.y / 2 - 50f));
+            float randomX = Random.Range(-size.x / 2 + mapMargin, size.x / 2 - mapMargin);
+            float randomY = Random.Range(-size.y / 2 + mapMargin, size.y / 2 - mapMargin);
+            Vector2 pos = center + new Vector2(randomX, randomY);
             Instantiate(ennemy, pos, Quaternion.identity, canvas);
         }
     }
 
-    private void CopyData()
-    {
-        var instance = PlayerManager.Instance;
-
-        hpMax = instance.hpMax;
-        spMax = instance.spMax;
-        rockets = instance.rockets;
-        score = instance.score;
-        kills = instance.kills;
-        coins = instance.coins;
-    }
-
     public void ResetWave()
     {
-        var instance = PlayerManager.Instance;
-
-        instance.RestoreHealth(hpMax);
-        instance.RestoreShield(spMax);
-        instance.RestoreRockets(rockets);
-        instance.RestoreScore(score);
-        instance.RestoreKills(kills);
-        instance.RestoreCoins(coins);
+        PlayerManager.Instance.RestoreData();
 
         ennemiesDestroyed = 0;
 
@@ -203,7 +185,8 @@ public class WaveManager : MonoBehaviour
         if (ennemiesDestroyed == ennemies) {
             CleanScene(false);
 
-            PlayerManager.Instance.AddScore(100 * wave);
+            PlayerManager.Instance.AddScore(waveScorePoint * wave);
+            PlayerManager.Instance.ResetLifeAndShield();
 
             StartCoroutine(EndWave());
         }
@@ -269,14 +252,14 @@ public class WaveManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(2f);
 
-        PlayerManager.Instance.AddScore(50 * PlayerManager.Instance.coins);
+        PlayerManager.Instance.AddCoinScore();
 
         if (HighscoreManager.Instance.IsElligibleForHighscores(PlayerManager.Instance.score))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("EnterHighscore");
         } else
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Menu");
         }
     }
 }

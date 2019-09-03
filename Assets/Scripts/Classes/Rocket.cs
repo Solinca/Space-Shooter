@@ -2,14 +2,12 @@
 
 public class Rocket : MonoBehaviour
 {
-    private new Rigidbody2D rigidbody;
     private readonly float velocity = 600f;
     private readonly int damage = 20;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = transform.up * velocity;
+        GetComponent<Rigidbody2D>().velocity = transform.up * velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

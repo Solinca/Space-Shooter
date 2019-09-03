@@ -2,14 +2,14 @@
 
 public class Bullet : MonoBehaviour
 {
+    public bool isPlayerBullet;
+
     private readonly float velocity = 500f;
     private readonly int damage = 5;
-    public bool isPlayerBullet;
 
     private void Start()
     {
-        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = transform.up * velocity;
+        GetComponent<Rigidbody2D>().velocity = transform.up * velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

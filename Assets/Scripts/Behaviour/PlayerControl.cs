@@ -3,7 +3,7 @@
 public class PlayerControl : MonoBehaviour
 {
     private new Rigidbody2D rigidbody;
-    private float speed = 350f;
+    private readonly float speed = 350f;
     private Vector2 velocity;
 
     private void Start()

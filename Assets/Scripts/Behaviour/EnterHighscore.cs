@@ -19,6 +19,6 @@ public class EnterHighscore : MonoBehaviour
     public void ReturnToMainMenu()
     {
         HighscoreManager.Instance.AddNewEntry(PlayerManager.Instance.score, playerName.text);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
     }
 }

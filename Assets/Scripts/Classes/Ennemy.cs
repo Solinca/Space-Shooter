@@ -5,6 +5,7 @@ public class Ennemy : MonoBehaviour, IShip
 {
     public Coin coin;
     public Slider HealthBar;
+
     private float health = 20f;
     private readonly float maxHealth = 20f;
     private Transform canvas;
@@ -13,7 +14,6 @@ public class Ennemy : MonoBehaviour, IShip
     private void Start()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
-        HealthBar.value = health;
     }
 
     public void GetDamaged (int damage, bool isPlayerBullet)
