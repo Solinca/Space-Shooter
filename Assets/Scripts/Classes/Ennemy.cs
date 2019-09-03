@@ -8,6 +8,7 @@ public class Ennemy : MonoBehaviour, IShip
     private float health = 20f;
     private readonly float maxHealth = 20f;
     private Transform canvas;
+    private bool isDead = false;
 
     private void Start()
     {
@@ -20,8 +21,9 @@ public class Ennemy : MonoBehaviour, IShip
         health -= damage;
         HealthBar.value = health / maxHealth;
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
+            isDead = true;
             DestroyEnnemy(isPlayerBullet);
         }
     }

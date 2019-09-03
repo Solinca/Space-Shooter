@@ -416,6 +416,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1674ff09b6af5a143aae2e7c1d024884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8925080222132279595, guid: ea2d40c385f68944f8d102aefe9fefe0, type: 3}
-  bulletImage: {fileID: 21300000, guid: c4b06c20a938a6e46949e8faac79b20e, type: 3}
+  bullet: {fileID: 8243658721422971822, guid: e28d7d4bc88afd24fb04e7b2e22a3fff, type: 3}
   HealthBar: {fileID: 721731215}

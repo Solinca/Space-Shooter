@@ -62,8 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Behaviour\EnterHighscore.cs" />
     <Compile Include="Assets\Scripts\Behaviour\FireBullet.cs" />
     <Compile Include="Assets\Scripts\Behaviour\FireRocket.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\InitHighscores.cs" />
     <Compile Include="Assets\Scripts\Behaviour\LookAtMouse.cs" />
     <Compile Include="Assets\Scripts\Behaviour\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\Behaviour\ShieldRegeneration.cs" />
@@ -71,11 +73,14 @@
     <Compile Include="Assets\Scripts\Classes\Bullet.cs" />
     <Compile Include="Assets\Scripts\Classes\Coin.cs" />
     <Compile Include="Assets\Scripts\Classes\Ennemy.cs" />
+    <Compile Include="Assets\Scripts\Classes\HighscoreEntry.cs" />
+    <Compile Include="Assets\Scripts\Classes\Highscores.cs" />
     <Compile Include="Assets\Scripts\Classes\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Classes\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Classes\Player.cs" />
     <Compile Include="Assets\Scripts\Classes\Rocket.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IShip.cs" />
+    <Compile Include="Assets\Scripts\Managers\HighscoreManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ShopManager.cs" />

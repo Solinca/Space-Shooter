@@ -2,7 +2,7 @@
 
 public class FireBullet : MonoBehaviour
 {
-    public Bullet bullet;
+    public Collider2D bullet;
     private Transform canvas;
     private new Collider2D collider;
 
@@ -16,9 +16,8 @@ public class FireBullet : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && !PauseMenu.isPaused && !WaveManager.Instance.isPaused)
         {
-            Bullet bulletClone = Instantiate(bullet, transform.position + transform.up * 40f, transform.rotation, canvas);
-            Physics2D.IgnoreCollision(bulletClone.GetComponent<Collider2D>(), collider);
-            bulletClone.SetPlayerBullet(true);
+            Collider2D bulletClone = Instantiate(bullet, transform.position + transform.up * 40f, transform.rotation, canvas);
+            Physics2D.IgnoreCollision(bulletClone, collider);
         }
     }
 }

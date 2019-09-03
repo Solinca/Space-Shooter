@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
@@ -158,9 +159,9 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(ProcessWave(true));
     }
 
-    public void CleanScene(bool withEnnemy)
+    public void CleanScene(bool withEnnemyAndCoins)
     {
-        if (withEnnemy)
+        if (withEnnemyAndCoins)
         {
             var ennemiesObject = GameObject.FindGameObjectsWithTag("Ship");
 
@@ -171,13 +172,13 @@ public class WaveManager : MonoBehaviour
                     Destroy(ennemyObject);
                 }
             }
-        }
 
-        var coinsObject = GameObject.FindGameObjectsWithTag("Coin");
+            var coinsObject = GameObject.FindGameObjectsWithTag("Coin");
 
-        foreach (GameObject coinObject in coinsObject)
-        {
-            Destroy(coinObject);
+            foreach (GameObject coinObject in coinsObject)
+            {
+                Destroy(coinObject);
+            }
         }
 
         var rocketsObject = GameObject.FindGameObjectsWithTag("Rocket");
@@ -245,5 +246,37 @@ public class WaveManager : MonoBehaviour
         shop.SetActive(false);
 
         StartCoroutine(ProcessWave(false));
+    }
+
+    public void GameOver()
+    {
+        CleanScene(true);
+
+        StartCoroutine(EndScreen());
+    }
+
+    private IEnumerator EndScreen()
+    {
+        isPaused = true;
+
+        waveText.text = "GAME OVER :(";
+
+        for (float i = 0.05f; i <= 0.8f; i += 0.05f)
+        {
+            SetColor(i);
+            yield return new WaitForSecondsRealtime(0.05f);
+        }
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        PlayerManager.Instance.AddScore(50 * PlayerManager.Instance.coins);
+
+        if (HighscoreManager.Instance.IsElligibleForHighscores(PlayerManager.Instance.score))
+        {
+            SceneManager.LoadScene(2);
+        } else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

@@ -3,12 +3,11 @@ using UnityEngine.UI;
 
 public class ShootNearbyUnit : MonoBehaviour
 {
-    public Bullet bullet;
+    public Collider2D bullet;
     private readonly float fireRate = 0.5f;
     private float lastShot = 0f;
     private Transform canvas;
     private new Collider2D collider;
-    public Sprite bulletImage;
     public Slider HealthBar;
 
     private void Start()
@@ -41,14 +40,12 @@ public class ShootNearbyUnit : MonoBehaviour
                 }
             }
 
-            Vector2 direction = new Vector2(target.transform.position.x - transform.position.x, target.transform.position.y - transform.position.y);
-            transform.up = direction;
+            transform.up = target.transform.position - transform.position;
             HealthBar.transform.rotation = Quaternion.identity;
             HealthBar.transform.position = transform.position + new Vector3(0, -39f);
 
-            Bullet bulletClone = Instantiate(bullet, transform.position, transform.rotation, canvas);
-            Physics2D.IgnoreCollision(bulletClone.GetComponent<Collider2D>(), collider);
-            bulletClone.ChangeImage(bulletImage);
+            Collider2D bulletClone = Instantiate(bullet, transform.position, transform.rotation, canvas);
+            Physics2D.IgnoreCollision(bulletClone, collider);
 
             lastShot = Time.time;
         }

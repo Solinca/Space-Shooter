@@ -6,7 +6,11 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
-        PlayerManager.Instance.ResetValues();
+
+        if (PlayerManager.Instance)
+        {
+            PlayerManager.Instance.ResetValues();
+        }
     }
 
     public void QuitGame()

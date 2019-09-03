@@ -47,8 +47,6 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject[] lifesContainer;
 
-    public WaveManager wavemanager;
-
     public void AddCoin()
     {
         Pay(-1);
@@ -117,7 +115,14 @@ public class PlayerManager : MonoBehaviour
         {
             lifes--;
             ManageLife();
-            wavemanager.ResetWave();
+
+            if (lifes > 0)
+            {
+                WaveManager.Instance.ResetWave();
+            } else
+            {
+                WaveManager.Instance.GameOver();
+            }
         }
     }
 

@@ -19,6 +19,31 @@ public class ShopManager : MonoBehaviour
         CheckPrice();
     }
 
+    public void RefillRockets()
+    {
+        PlayerManager.Instance.RefillRockets();
+    }
+
+    public void AddOneLife()
+    {
+        PlayerManager.Instance.AddOneLife();
+    }
+
+    public void AddOneRocket()
+    {
+        PlayerManager.Instance.AddOneRocket();
+    }
+
+    public void UpgradeShieldRegenerationRate()
+    {
+        PlayerManager.Instance.UpgradeShieldRegenerationRate();
+    }
+
+    public void AddTenShield()
+    {
+        PlayerManager.Instance.AddTenShield();
+    }
+
     public void CheckPrice()
     {
         int coins = PlayerManager.Instance.coins;
