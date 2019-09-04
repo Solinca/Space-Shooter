@@ -69,7 +69,7 @@
     <Compile Include="Assets\Scripts\Behaviour\LookAtMouse.cs" />
     <Compile Include="Assets\Scripts\Behaviour\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\Behaviour\ShieldRegeneration.cs" />
-    <Compile Include="Assets\Scripts\Behaviour\ShootNearbyUnit.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\ShootAtPlayer.cs" />
     <Compile Include="Assets\Scripts\Classes\Bullet.cs" />
     <Compile Include="Assets\Scripts\Classes\Coin.cs" />
     <Compile Include="Assets\Scripts\Classes\Ennemy.cs" />
