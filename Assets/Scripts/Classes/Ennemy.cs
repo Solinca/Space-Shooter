@@ -3,17 +3,20 @@ using UnityEngine.UI;
 
 public class Ennemy : MonoBehaviour, IShip
 {
-    public Coin coin;
     public Slider HealthBar;
 
     private float health = 20f;
     private readonly float maxHealth = 20f;
-    private Transform canvas;
     private bool isDead = false;
+    private readonly float healthBarPosition = -40f;
 
-    private void Start()
+    private void OnEnable()
     {
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        isDead = false;
+        health = maxHealth;
+        HealthBar.value = 1f;
+        HealthBar.transform.rotation = Quaternion.identity;
+        HealthBar.transform.position = transform.position + new Vector3(0, healthBarPosition);
     }
 
     public void GetDamaged (int damage, bool isPlayerBullet)
@@ -36,8 +39,7 @@ public class Ennemy : MonoBehaviour, IShip
         }
 
         WaveManager.Instance.DestroyedEnnemy();
-
-        Instantiate(coin, transform.position, Quaternion.identity, canvas);
-        Destroy(gameObject);
+        ObjectPoolManager.Instance.SpawnFromPool("Coin", transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
     }
 }

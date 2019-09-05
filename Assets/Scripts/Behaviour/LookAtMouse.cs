@@ -3,15 +3,17 @@
 public class LookAtMouse : MonoBehaviour
 {
     private new Camera camera;
+    private WaveManager waveManager;
 
     private void Start()
     {
+        waveManager = WaveManager.Instance;
         camera = Camera.main;
     }
 
     private void Update()
     {
-        if (PauseMenu.isPaused || WaveManager.Instance.isPaused)
+        if (PauseMenu.isPaused || waveManager.isPaused)
         {
             return;
         }

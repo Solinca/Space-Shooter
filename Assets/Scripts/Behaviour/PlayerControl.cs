@@ -5,9 +5,11 @@ public class PlayerControl : MonoBehaviour
     private new Rigidbody2D rigidbody;
     private readonly float speed = 350f;
     private Vector2 velocity;
+    private WaveManager waveManager;
 
     private void Start()
     {
+        waveManager = WaveManager.Instance;
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -20,7 +22,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (WaveManager.Instance.isPaused)
+        if (waveManager.isPaused)
         {
             return;
         }

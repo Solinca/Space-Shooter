@@ -20,7 +20,6 @@ public class WaveManager : MonoBehaviour
 
     public Image wavePanel;
     public Text waveText;
-    public Ennemy ennemy;
     public Collider2D rectangle;
     public Player player;
     public Transform spawnPoint;
@@ -34,13 +33,11 @@ public class WaveManager : MonoBehaviour
     private readonly int waveScorePoint = 100;
     private Vector2 center;
     private Vector2 size;
-    private Transform canvas;
 
     void Start()
     {
         center = rectangle.bounds.center;
         size = rectangle.bounds.size ;
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
         isPaused = true;
     }
 
@@ -126,7 +123,7 @@ public class WaveManager : MonoBehaviour
             float randomX = Random.Range(-size.x / 2 + mapMargin, size.x / 2 - mapMargin);
             float randomY = Random.Range(-size.y / 2 + mapMargin, size.y / 2 - mapMargin);
             Vector2 pos = center + new Vector2(randomX, randomY);
-            Instantiate(ennemy, pos, Quaternion.identity, canvas);
+            ObjectPoolManager.Instance.SpawnFromPool("Ennemy", pos, Quaternion.identity);
         }
     }
 
@@ -151,7 +148,7 @@ public class WaveManager : MonoBehaviour
             {
                 if (ennemyObject.GetComponent<Player>() == null)
                 {
-                    Destroy(ennemyObject);
+                    ennemyObject.SetActive(false);
                 }
             }
 
@@ -159,7 +156,7 @@ public class WaveManager : MonoBehaviour
 
             foreach (GameObject coinObject in coinsObject)
             {
-                Destroy(coinObject);
+                coinObject.SetActive(false);
             }
         }
 
@@ -167,14 +164,14 @@ public class WaveManager : MonoBehaviour
 
         foreach (GameObject rocketObject in rocketsObject)
         {
-            Destroy(rocketObject);
+            rocketObject.SetActive(false);
         }
 
         var bulletsObject = GameObject.FindGameObjectsWithTag("Bullet");
 
         foreach (GameObject bulletObject in bulletsObject)
         {
-            Destroy(bulletObject);
+            bulletObject.SetActive(false);
         }
     }
 

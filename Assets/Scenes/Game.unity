@@ -687,6 +687,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171020449}
   m_CullTransparentMesh: 0
+--- !u!1 &174898755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174898757}
+  - component: {fileID: 174898756}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &174898756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174898755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d773ec6d3a640043a6c357ab7f20122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - list: []
+    prefab: {fileID: 8243658721422971820, guid: e28d7d4bc88afd24fb04e7b2e22a3fff,
+      type: 3}
+    key: GreenBullet
+    size: 10
+  - list: []
+    prefab: {fileID: 8925080222132279590, guid: ea2d40c385f68944f8d102aefe9fefe0,
+      type: 3}
+    key: Bullet
+    size: 5
+  - list: []
+    prefab: {fileID: 4567308094679606073, guid: d85a58a1827765849949d0a1748715b9,
+      type: 3}
+    key: Ennemy
+    size: 3
+  - list: []
+    prefab: {fileID: 8327155093472088290, guid: 41f251006f161994aade934037a76e86,
+      type: 3}
+    key: Rocket
+    size: 1
+  - list: []
+    prefab: {fileID: 6488179209057301235, guid: f1f37d07a136b3741864b2168172639b,
+      type: 3}
+    key: Coin
+    size: 1
+--- !u!4 &174898757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174898755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 873.0531, y: 535.9292, z: -366.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &183878601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5488b034d934e14f960b9b30a5ea2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8925080222132279588, guid: ea2d40c385f68944f8d102aefe9fefe0, type: 3}
 --- !u!114 &271260244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,7 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48af184fcdcf431468482b6f1ccc6b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket: {fileID: 8327155093472088312, guid: 41f251006f161994aade934037a76e86, type: 3}
 --- !u!1 &281494731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5545,7 +5612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wavePanel: {fileID: 607148692}
   waveText: {fileID: 1155109967}
-  ennemy: {fileID: 4567308094679606079, guid: d85a58a1827765849949d0a1748715b9, type: 3}
   rectangle: {fileID: 1302843731}
   player: {fileID: 271260244}
   spawnPoint: {fileID: 460475957}

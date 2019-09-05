@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - LifeManager
     - LookAtMouse
     - MainMenu
+    - ObjectPoolManager
     - PauseMenu
     - Player
     - PlayerControl
@@ -28,14 +29,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
@@ -189,6 +182,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10538}
     - Class: 114
       Script: {instanceID: 10542}
+    - Class: 114
+      Script: {instanceID: 11696}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -737,13 +732,13 @@ ScriptsOnlyBuild:
     className: Coin
   - hash:
       serializedVersion: 2
-      Hash: 61d9f47841df83dcdf6db50381c86e21
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FireBullet
   - hash:
       serializedVersion: 2
-      Hash: 5d5aca373936b3a7365319e17d516a69
+      Hash: b8b270021983465dd7e6cc2482c17655
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WaveManager
@@ -809,7 +804,7 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
-      Hash: 8985185eb637aa4d1c64501b16b0ccda
+      Hash: 807dbde5ba35d818492e8782859b1817
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ennemy
@@ -869,7 +864,7 @@ ScriptsOnlyBuild:
     className: InitHighscores
   - hash:
       serializedVersion: 2
-      Hash: 6d95ee79e5bd73f3211b8fa9fef075ee
+      Hash: 807dbde5ba35d818492e8782859b1817
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShootAtPlayer
@@ -1013,7 +1008,7 @@ ScriptsOnlyBuild:
     className: TextManager
   - hash:
       serializedVersion: 2
-      Hash: 3b68c563f17cd621bffedb77b36810b2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FireRocket
@@ -1041,6 +1036,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: b955ac833ced17fdd8b89093c2387d90
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ObjectPoolManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity

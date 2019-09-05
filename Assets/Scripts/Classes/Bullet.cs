@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private readonly float velocity = 500f;
     private readonly int damage = 5;
 
-    private void Start()
+    private void OnEnable()
     {
         GetComponent<Rigidbody2D>().velocity = transform.up * velocity;
     }
@@ -21,6 +21,6 @@ public class Bullet : MonoBehaviour
             ship.GetDamaged(damage, isPlayerBullet);
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

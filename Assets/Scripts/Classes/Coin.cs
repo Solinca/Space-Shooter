@@ -8,9 +8,18 @@ public class Coin : MonoBehaviour
     private readonly float autoDestructionTime = 3f;
     private bool collected = false;
 
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, autoDestructionTime);
+        collected = false;
+        transform.localScale = new Vector2(0.25f, 0.25f);
+        StartCoroutine(AutoDestruction());
+    }
+
+    private IEnumerator AutoDestruction()
+    {
+        yield return new WaitForSeconds(autoDestructionTime);
+
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +39,6 @@ public class Coin : MonoBehaviour
         audio.Play();
         transform.localScale = Vector3.zero;
         yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

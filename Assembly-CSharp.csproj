@@ -78,10 +78,12 @@
     <Compile Include="Assets\Scripts\Classes\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Classes\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Classes\Player.cs" />
+    <Compile Include="Assets\Scripts\Classes\Pool.cs" />
     <Compile Include="Assets\Scripts\Classes\Rocket.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IShip.cs" />
     <Compile Include="Assets\Scripts\Managers\HighscoreManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ObjectPoolManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ShopManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TextManager.cs" />

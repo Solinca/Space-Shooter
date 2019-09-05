@@ -3,17 +3,16 @@ using UnityEngine.UI;
 
 public class ShootAtPlayer : MonoBehaviour
 {
-    public Bullet bullet;
     public Slider HealthBar;
 
     private readonly float fireRate = 0.5f;
     private readonly float healthBarPosition = -40f;
     private float lastShot = 0f;
-    private Transform canvas;
+    private ObjectPoolManager objectPoolManager;
 
     private void Start()
     {
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        objectPoolManager = ObjectPoolManager.Instance;
     }
 
     private void FixedUpdate()
@@ -26,7 +25,7 @@ public class ShootAtPlayer : MonoBehaviour
             HealthBar.transform.rotation = Quaternion.identity;
             HealthBar.transform.position = transform.position + new Vector3(0, healthBarPosition);
 
-            Instantiate(bullet, transform.position, transform.rotation, canvas);
+            objectPoolManager.SpawnFromPool("GreenBullet", transform.position, transform.rotation);
 
             lastShot = Time.time;
         }
