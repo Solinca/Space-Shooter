@@ -20,12 +20,19 @@ It's an unlimited waves game, the goal is just to get the highest score ( extra 
 I didn't make the music or the graphics, so here is a special thanks for the creators:
 
 https://assetstore.unity.com/packages/2d/textures-materials/dynamic-space-background-lite-104606 for backgrounds
+
 https://assetstore.unity.com/packages/2d/textures-materials/galaxia-2d-space-shooter-sprite-pack-1-64944 for ships and bullets
+
 https://assetstore.unity.com/packages/audio/music/electronic/deep-in-space-88071 for main menu music
+
 https://assetstore.unity.com/packages/audio/music/absolute-space-sci-fi-music-free-sample-103274 for game music
+
 https://assetstore.unity.com/packages/audio/sound-fx/coins-sfx-39052 for coin sound
+
 https://assetstore.unity.com/packages/audio/sound-fx/space-sfx-102218-131463 for bullets and rocket sound
+
 https://assetstore.unity.com/packages/tools/gui/simple-heart-health-system-120676 for the heart icon
+
 https://assetstore.unity.com/packages/2d/gui/fantasy-wooden-gui-free-103811 for the shop assets
 
 https://assetstore.unity.com/packages/2d/textures-materials/2d-sci-fi-weapons-pack-22679 for health, armor, ammo and rocket asset, even though I remodeled them
