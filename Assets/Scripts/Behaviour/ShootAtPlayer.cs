@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class ShootAtPlayer : MonoBehaviour
 {
-    public Slider HealthBar;
+    public GameObject HealthBar;
 
     private readonly float fireRate = 0.5f;
     private readonly float healthBarPosition = -40f;

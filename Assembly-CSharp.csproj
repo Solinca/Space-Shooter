@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Behaviour\InitHighscores.cs" />
     <Compile Include="Assets\Scripts\Behaviour\LookAtMouse.cs" />
     <Compile Include="Assets\Scripts\Behaviour\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Behaviour\ResizeBackgroundToScreen.cs" />
     <Compile Include="Assets\Scripts\Behaviour\ShieldRegeneration.cs" />
     <Compile Include="Assets\Scripts\Behaviour\ShootAtPlayer.cs" />
     <Compile Include="Assets\Scripts\Classes\Bullet.cs" />

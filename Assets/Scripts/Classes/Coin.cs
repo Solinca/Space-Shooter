@@ -11,7 +11,7 @@ public class Coin : MonoBehaviour
     private void OnEnable()
     {
         collected = false;
-        transform.localScale = new Vector2(0.25f, 0.25f);
+        transform.localScale = new Vector2(38f, 38f);
         StartCoroutine(AutoDestruction());
     }
 

@@ -37,7 +37,7 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         center = rectangle.bounds.center;
-        size = rectangle.bounds.size ;
+        size = (Vector2) rectangle.bounds.size * (Vector2) rectangle.transform.localScale;
         isPaused = true;
     }
 

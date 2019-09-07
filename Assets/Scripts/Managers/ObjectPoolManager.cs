@@ -4,6 +4,7 @@ using UnityEngine;
 public class ObjectPoolManager : MonoBehaviour
 {
     public static ObjectPoolManager Instance { get; private set; }
+    public Transform gameContainer;
 
     private void Awake()
     {
@@ -19,18 +20,15 @@ public class ObjectPoolManager : MonoBehaviour
     public Dictionary<string, Pool> dictionnary;
     public List<Pool> pools;
 
-    private Transform canvas;
-
     private void Start()
     {
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
         dictionnary = new Dictionary<string, Pool>();
 
         foreach(Pool pool in pools)
         {
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject createdObject = Instantiate(pool.prefab, canvas);
+                GameObject createdObject = Instantiate(pool.prefab, gameContainer);
                 createdObject.SetActive(false);
                 pool.list.Add(createdObject);
             }
@@ -48,16 +46,16 @@ public class ObjectPoolManager : MonoBehaviour
             return null;
         }
         
-        GameObject objectToSpawn = ReturnObjectFromList(key, position, rotation);
+        GameObject objectToSpawn = GetObjectFromList(key, position, rotation);
 
-        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.position = new Vector3(position.x, position.y, 0);
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.SetActive(true);
 
         return objectToSpawn;
     }
 
-    private GameObject ReturnObjectFromList(string key, Vector3 position, Quaternion rotation)
+    private GameObject GetObjectFromList(string key, Vector3 position, Quaternion rotation)
     {
         Pool pool = dictionnary[key];
 
@@ -69,7 +67,7 @@ public class ObjectPoolManager : MonoBehaviour
             }
         }
 
-        GameObject newPoolObject = Instantiate(pool.prefab, position, rotation, canvas);
+        GameObject newPoolObject = Instantiate(pool.prefab, new Vector3(position.x, position.y, 0), rotation, gameContainer);
         pool.list.Add(newPoolObject);
 
         return newPoolObject;

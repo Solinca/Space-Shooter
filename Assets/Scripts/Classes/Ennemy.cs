@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class Ennemy : MonoBehaviour, IShip
 {
-    public Slider HealthBar;
+    public GameObject HealthBar;
+    public GameObject Bar;
 
     private float health = 20f;
     private readonly float maxHealth = 20f;
@@ -14,7 +14,7 @@ public class Ennemy : MonoBehaviour, IShip
     {
         isDead = false;
         health = maxHealth;
-        HealthBar.value = 1f;
+        Bar.transform.localScale = Vector3.one;
         HealthBar.transform.rotation = Quaternion.identity;
         HealthBar.transform.position = transform.position + new Vector3(0, healthBarPosition);
     }
@@ -22,7 +22,7 @@ public class Ennemy : MonoBehaviour, IShip
     public void GetDamaged (int damage, bool isPlayerBullet)
     {
         health -= damage;
-        HealthBar.value = health / maxHealth;
+        Bar.transform.localScale = new Vector3(health / maxHealth, 1, 1);
 
         if (health <= 0 && !isDead)
         {
