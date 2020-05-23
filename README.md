@@ -1,6 +1,8 @@
 # Space-Shooter
 A little space shooter in UNITY
 
+You can play it here https://solinca.itch.io/space-shooter
+
 Controls:
 
 - Move your ship with keyboard's arrows or AWSD
